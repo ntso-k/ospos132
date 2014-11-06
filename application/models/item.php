@@ -271,6 +271,7 @@ class Item extends CI_Model
 		$this->db->where('deleted',0);
 		$this->db->like('name', $search);
 		$this->db->order_by("name", "asc");
+		$this->db->limit($limit);
 		$by_name = $this->db->get();
 		foreach($by_name->result() as $row)
 		{
@@ -281,9 +282,11 @@ class Item extends CI_Model
 		$this->db->where('deleted',0);
 		$this->db->like('item_number', $search);
 		$this->db->order_by("item_number", "asc");
+		$this->db->limit($limit);
 		$by_item_number = $this->db->get();
 		foreach($by_item_number->result() as $row)
 		{
+			if(!in_array($row->item_id.'|'.$row->item_number, $suggestions))
 			$suggestions[]=$row->item_id.'|'.$row->item_number;
 		}
 /** GARRISON ADDED 4/21/2013 **/
@@ -292,9 +295,11 @@ class Item extends CI_Model
 		$this->db->where('deleted',0);
 		$this->db->like('description', $search);
 		$this->db->order_by("description", "asc");
+		$this->db->limit($limit);
 		$by_description = $this->db->get();
 		foreach($by_description->result() as $row)
 		{
+			if(!in_array($row->item_id.'|'.$row->name, $suggestions))
 			$suggestions[]=$row->item_id.'|'.$row->name;
 		}
 /** END GARRISON ADDED **/	

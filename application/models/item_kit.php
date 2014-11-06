@@ -141,6 +141,7 @@ class Item_kit extends CI_Model
 		$this->db->from('item_kits');
 		$this->db->like('name', $search);
 		$this->db->order_by("name", "asc");
+		$this->db->limit($limit);
 		$by_name = $this->db->get();
 		foreach($by_name->result() as $row)
 		{

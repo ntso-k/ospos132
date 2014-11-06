@@ -388,7 +388,7 @@ $(document).ready(function()
     {
     	minChars:0,
     	max:100,
-    	selectFirst: false,
+    	selectFirst: true,
        	delay:10,
     	formatItem: function(row) {
 			return row[1];
