@@ -12,5 +12,5 @@ $lang['customers_one_or_multiple'] = '客戶';
 $lang['customers_cannot_be_deleted'] = '无法刪除选定的客戶，选定的客戶存有销售记录。';
 $lang['customers_basic_information'] = '客戶资讯';
 $lang['customers_account_number'] = '帐号 #';
-$lang['customers_taxable'] = '应課税';
+$lang['customers_taxable'] = '应征税';
 ?>
