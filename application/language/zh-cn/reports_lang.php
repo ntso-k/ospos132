@@ -1,7 +1,7 @@
 <?php
 $lang['reports_reports'] = '报表';
 $lang['reports_report'] = '报表';
-$lang['reports_welcome_message'] = '欢迎使用报表系統。请选择要查看的报表。';
+$lang['reports_welcome_message'] = '欢迎使用报表系统。请选择要查看的报表。';
 $lang['reports_sales_summary_report'] = '销售摘要报告';
 $lang['reports_categories_summary_report'] = '分类摘要报告';
 $lang['reports_customers_summary_report'] = '客戶摘要报告';

@@ -14,13 +14,13 @@ $lang['module_sales'] = '出货';
 $lang['module_sales_desc'] = '出货与退货';
 
 $lang['module_reports'] = '报表';
-$lang['module_reports_desc'] = '检視与产生报表';
+$lang['module_reports_desc'] = '检视与产生报表';
 
 $lang['module_items'] = '产品';
 $lang['module_items_desc'] = '添加，更新，刪除，搜索产品';
 
-$lang['module_config'] = '系統配置';
-$lang['module_config_desc'] = '修改系統配置';
+$lang['module_config'] = '系统配置';
+$lang['module_config_desc'] = '修改系统配置';
 
 $lang['module_receivings'] = '进货';
 $lang['module_receivings_desc'] = '採购訂单流程';

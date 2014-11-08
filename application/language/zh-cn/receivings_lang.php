@@ -16,6 +16,7 @@ $lang['recvs_unable_to_add_item'] = '无法新增进货资料';
 $lang['recvs_error_editing_item'] = '产品編辑错误';
 $lang['recvs_receipt'] = '收货凭证';
 $lang['recvs_complete_receiving'] = '完成';
+$lang['recvs_cancel_receiving'] = '取消';
 $lang['recvs_confirm_finish_receiving'] = '您确定要提交此进货资料吗？一旦提交将不能撤消。';
 $lang['recvs_confirm_cancel_receiving'] = '您确定要刪除此进货资料吗？本资料中所有的产品资料也将会被清空。';
 $lang['recvs_find_or_scan_item'] = '查找 / 扫描产品';
