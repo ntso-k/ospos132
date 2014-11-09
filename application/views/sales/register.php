@@ -92,7 +92,7 @@ else
 		<tr>
 				<td><?php echo anchor("sales/delete_item/$line",'['.$this->lang->line('common_delete').']');?></td>
 				<td><?php echo $item['item_number']; ?></td>
-				<td style="align: center;"><?php echo $item['name']; ?><br /> [<?php echo $item['in_stock'] ?> in <?php echo $item['stock_name']; ?>]
+				<td style="align: center;"><?php echo $item['name']; ?><!--<br /> [<?php echo $item['in_stock'] ?> in <?php echo $item['stock_name']; ?>]-->
 				<?php echo form_hidden('location', $item['item_location']); ?>
 				</td>
 
@@ -193,6 +193,12 @@ else
 
 
 <div id="overall_sale">
+	<div id='sale_details'>
+		<div class="float_left" style='width: 55%;'><?php echo $this->lang->line('sales_total'); ?>:</div>
+		<div class="float_left" style="width: 45%; font-weight: bold;"><?php echo to_currency($total); ?></div>
+	</div>
+	<div class="clearfix">&nbsp;</div>
+	<div id="select_customer">
 	<?php
 	if(isset($customer))
 	{
@@ -203,35 +209,18 @@ else
 	{
 		echo form_open("sales/select_customer",array('id'=>'select_customer_form')); ?>
 		<label id="customer_label" for="customer"><?php echo $this->lang->line('sales_select_customer'); ?></label>
-		<?php echo form_input(array('name'=>'customer','id'=>'customer','size'=>'30','value'=>$this->lang->line('sales_start_typing_customer_name')));?>
-		</form>
-	<div style="margin-top: 5px; text-align: center;">
-		<h3 style="margin: 5px 0 5px 0"><?php echo $this->lang->line('common_or'); ?></h3>
+		<?php echo form_input(array('name'=>'customer','id'=>'customer','size'=>'30','style'=>'width:120px;','value'=>$this->lang->line('sales_start_typing_customer_name')));?>
+		<span><?php echo $this->lang->line('common_or'); ?></span>
 		<?php echo anchor("customers/view/-1/width:350",
-		"<div class='small_button' style='margin:0 auto;'><span>".$this->lang->line('sales_new_customer')."</span></div>",
+		"<div class='small_button' style='margin:0 auto; float:right;'><span>".$this->lang->line('sales_new_customer')."</span></div>",
 		array('class'=>'thickbox none','title'=>$this->lang->line('sales_new_customer')));
 		?>
-		</div>
+		</form>
 	<div class="clearfix">&nbsp;</div>
 		<?php
 	}
 	?>
-
-	<div id='sale_details'>
-		<div class="float_left" style="width: 55%;"><?php echo $this->lang->line('sales_sub_total'); ?>:</div>
-		<div class="float_left" style="width: 45%; font-weight: bold;"><?php echo to_currency($subtotal); ?></div>
-
-		<?php foreach($taxes as $name=>$value) { ?>
-		<div class="float_left" style='width: 55%;'><?php echo $name; ?>:</div>
-		<div class="float_left" style="width: 45%; font-weight: bold;"><?php echo to_currency($value); ?></div>
-		<?php }; ?>
-
-		<div class="float_left" style='width: 55%;'><?php echo $this->lang->line('sales_total'); ?>:</div>
-		<div class="float_left" style="width: 45%; font-weight: bold;"><?php echo to_currency($total); ?></div>
 	</div>
-
-
-
 
 	<?php
 	// Only show this part if there are Items already in the sale.
@@ -247,7 +236,7 @@ else
 		</div>
 		</form>
 	</div>
-	<div class="clearfix" style="margin-bottom: 1px;">&nbsp;</div>
+	<div class="clearfix">&nbsp;</div>
 		<?php
 		// Only show this part if there is at least one payment entered.
 		if(count($payments) > 0)
@@ -255,8 +244,14 @@ else
 		?>
 			<div id="finish_sale">
 				<?php echo form_open("sales/complete",array('id'=>'finish_sale_form')); ?>
-				<label id="comment_label" for="comment"><?php echo $this->lang->line('common_comments'); ?>:</label>
-				<?php echo form_textarea(array('name'=>'comment', 'id' => 'comment', 'value'=>$comment,'rows'=>'4','cols'=>'23'));?>
+				<div class="clearfix">
+					<div class="small_button" id="suspend_sale_button" style="float:left;margin-top:5px;"><span><?php echo $this->lang->line('sales_suspend_sale'); ?></span></div>
+					<?php if ($payments_cover_total){ ?>
+					<div class='small_button' id='finish_sale_button' style='float:right;margin-top:5px;'><span><?php echo $this->lang->line('sales_complete_sale') ?></span></div>
+					<?php } ?>
+				</div>
+				<label id="comment_label" for="comment"><?php echo $this->lang->line('sales_comments'); ?>:</label>
+				<?php echo form_textarea(array('name'=>'comment', 'id' => 'comment', 'value'=>$comment,'rows'=>'3','cols'=>'30'));?>
 				<br />
 		<br />
 				
@@ -271,12 +266,6 @@ else
 					    'checked'     => (boolean)$email_receipt,
 					    )).'<br />('.$customer_email.')<br />';
 				}
-				 
-				if ($payments_cover_total)
-				{
-					echo "<div class='small_button' id='finish_sale_button' style='float:left;margin-top:5px;'><span>".$this->lang->line('sales_complete_sale')."</span></div>";
-				}
-				echo "<div class='small_button' id='suspend_sale_button' style='float:right;margin-top:5px;'><span>".$this->lang->line('sales_suspend_sale')."</span></div>";
 				?>
 			</div>
 	</form>
