@@ -188,6 +188,8 @@ class Item extends CI_Model
 	{
 		$suggestions = array();
 
+			return $suggestions;
+
 		$this->db->from('items');
 		$this->db->like('name', $search);
 		$this->db->where('deleted',0);

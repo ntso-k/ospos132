@@ -116,6 +116,11 @@ class Item_kit extends CI_Model
 	{
 		$suggestions = array();
 
+		if($search == '')
+		{
+			return $suggestions;
+		}
+
 		$this->db->from('item_kits');
 		$this->db->like('name', $search);
 		$this->db->order_by("name", "asc");

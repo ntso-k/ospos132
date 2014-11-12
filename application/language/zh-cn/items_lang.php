@@ -81,4 +81,6 @@ $lang['items_is_deleted'] = 'Deleted';// Parq 131215
 $lang['items_inventory_data_tracking'] = '库存数据跟踪';
 $lang['items_inventory_data_tracking_in_out_qty'] = '进出数量';
 $lang['items_inventory_data_tracking_remarks'] = '备注';
+
+$lang['items_stock_location']='库存位置';
 ?>

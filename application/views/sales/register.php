@@ -49,7 +49,7 @@ else
 <?php echo form_input(array('name'=>'item','id'=>'item','size'=>'40'));?>
 <!-- no need the new item button in sale page
 <div id="new_item_button_register" >
-		<?php echo anchor("items/view/-1/width:360",
+		<?php echo anchor("items/view/-1/width:460",
 		"<div class='small_button'><span>".$this->lang->line('sales_new_item')."</span></div>",
 		array('class'=>'thickbox none','title'=>$this->lang->line('sales_new_item')));
 		?>
@@ -194,8 +194,8 @@ else
 
 <div id="overall_sale">
 	<div id='sale_details'>
-		<div class="float_left" style='width: 55%;'><?php echo $this->lang->line('sales_total'); ?>:</div>
-		<div class="float_left" style="width: 45%; font-weight: bold;"><?php echo to_currency($total); ?></div>
+		<div class="float_left" style='width: 40%;'><?php echo $this->lang->line('sales_total'); ?>:</div>
+		<div class="float_left" style="width: 60%; font-weight: bold;"><?php echo to_currency($total); ?></div>
 	</div>
 	<div class="clearfix">&nbsp;</div>
 	<div id="select_customer">
@@ -208,8 +208,8 @@ else
 	else
 	{
 		echo form_open("sales/select_customer",array('id'=>'select_customer_form')); ?>
-		<label id="customer_label" for="customer"><?php echo $this->lang->line('sales_select_customer'); ?></label>
-		<?php echo form_input(array('name'=>'customer','id'=>'customer','size'=>'30','style'=>'width:120px;','value'=>$this->lang->line('sales_start_typing_customer_name')));?>
+		<label id="customer_label" for="customer"><?php echo $this->lang->line('sales_select_customer'); ?></label><br/>
+		<?php echo form_input(array('name'=>'customer','id'=>'customer','size'=>'30','style'=>'width:180px;','value'=>$this->lang->line('sales_start_typing_customer_name')));?>
 		<span><?php echo $this->lang->line('common_or'); ?></span>
 		<?php echo anchor("customers/view/-1/width:350",
 		"<div class='small_button' style='margin:0 auto; float:right;'><span>".$this->lang->line('sales_new_customer')."</span></div>",
@@ -377,7 +377,7 @@ $(document).ready(function()
     {
     	minChars:0,
     	max:100,
-    	selectFirst: true,
+    	selectFirst: false,
        	delay:10,
     	formatItem: function(row) {
 			return row[1];

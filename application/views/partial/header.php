@@ -61,7 +61,7 @@ html {
 		</div>
 
 		<div id="menubar_date">
-		<?php echo date('F d, Y h:i a') ?>
+		<?php echo date('Y-m-d h:i a') ?>
 		</div>
 
 	</div>

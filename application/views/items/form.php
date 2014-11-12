@@ -70,54 +70,12 @@ echo form_open('items/save/'.$item_info->item_id,array('id'=>'item_form'));
 	</div>
 </div>
 
-<div class="field_row clearfix">
-<?php echo form_label($this->lang->line('items_tax_1').':', 'tax_percent_1',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'tax_names[]',
-		'id'=>'tax_name_1',
-		'size'=>'8',
-		'value'=> isset($item_tax_info[0]['name']) ? $item_tax_info[0]['name'] : $this->config->item('default_tax_1_name'))
-	);?>
-	</div>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'tax_percents[]',
-		'id'=>'tax_percent_name_1',
-		'size'=>'3',
-		'value'=> isset($item_tax_info[0]['percent']) ? $item_tax_info[0]['percent'] : $default_tax_1_rate)
-	);?>
-	%
-	</div>
-</div>
-
-<div class="field_row clearfix">
-<?php echo form_label($this->lang->line('items_tax_2').':', 'tax_percent_2',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'tax_names[]',
-		'id'=>'tax_name_2',
-		'size'=>'8',
-		'value'=> isset($item_tax_info[1]['name']) ? $item_tax_info[1]['name'] : $this->config->item('default_tax_2_name'))
-	);?>
-	</div>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'tax_percents[]',
-		'id'=>'tax_percent_name_2',
-		'size'=>'3',
-		'value'=> isset($item_tax_info[1]['percent']) ? $item_tax_info[1]['percent'] : $default_tax_2_rate)
-	);?>
-	%
-	</div>
-</div>
-
 <?php
 foreach($stock_locations as $key=>$location_detail)
 {
 ?>
     <div class="field_row clearfix">
-    <?php echo form_label($this->lang->line('items_quantity').' '.$location_detail['location_name'] .':', 
+    <?php echo form_label($this->lang->line('items_quantity').' ('.$location_detail['location_name'] .'):',
                             $key.'_quantity',
                             array('class'=>'required wide')); ?>
     	<div class='form_field'>
@@ -142,6 +100,50 @@ foreach($stock_locations as $key=>$location_detail)
 	);?>
 	</div>
 </div>
+
+<!--
+<div class="field_row clearfix">
+	<?php echo form_label($this->lang->line('items_tax_1').':', 'tax_percent_1',array('class'=>'wide')); ?>
+	<div class='form_field'>
+		<?php echo form_input(array(
+				'name'=>'tax_names[]',
+				'id'=>'tax_name_1',
+				'size'=>'8',
+				'value'=> isset($item_tax_info[0]['name']) ? $item_tax_info[0]['name'] : $this->config->item('default_tax_1_name'))
+		);?>
+	</div>
+	<div class='form_field'>
+		<?php echo form_input(array(
+				'name'=>'tax_percents[]',
+				'id'=>'tax_percent_name_1',
+				'size'=>'3',
+				'value'=> isset($item_tax_info[0]['percent']) ? $item_tax_info[0]['percent'] : $default_tax_1_rate)
+		);?>
+		%
+	</div>
+</div>
+
+<div class="field_row clearfix">
+	<?php echo form_label($this->lang->line('items_tax_2').':', 'tax_percent_2',array('class'=>'wide')); ?>
+	<div class='form_field'>
+		<?php echo form_input(array(
+				'name'=>'tax_names[]',
+				'id'=>'tax_name_2',
+				'size'=>'8',
+				'value'=> isset($item_tax_info[1]['name']) ? $item_tax_info[1]['name'] : $this->config->item('default_tax_2_name'))
+		);?>
+	</div>
+	<div class='form_field'>
+		<?php echo form_input(array(
+				'name'=>'tax_percents[]',
+				'id'=>'tax_percent_name_2',
+				'size'=>'3',
+				'value'=> isset($item_tax_info[1]['percent']) ? $item_tax_info[1]['percent'] : $default_tax_2_rate)
+		);?>
+		%
+	</div>
+</div>
+-->
 
 <div class="field_row clearfix">
 <?php echo form_label($this->lang->line('items_description').':', 'description',array('class'=>'wide')); ?>
@@ -212,11 +214,9 @@ if($this->config->item('custom1_name') != NULL)
 	</div>
 <?php }//end if?>
 
-<div class="field_row clearfix">
-<?php
-if($this->config->item('custom2_name') != NULL)
-{
-	echo form_label($this->config->item('custom2_name').':', 'custom2',array('class'=>'wide')); ?>
+<?php if($this->config->item('custom2_name') != NULL){ ?>
+	<div class="field_row clearfix">
+	<?php echo form_label($this->config->item('custom2_name').':', 'custom2',array('class'=>'wide')); ?>
 	<div class='form_field'>
 		<?php echo form_input(array(
 			'name'=>'custom2',
@@ -227,11 +227,9 @@ if($this->config->item('custom2_name') != NULL)
 	</div>
 <?php }//end if?>
 
-<div class="field_row clearfix">
-<?php
-if($this->config->item('custom3_name') != NULL)
-{
-	echo form_label($this->config->item('custom3_name').':', 'custom3',array('class'=>'wide')); ?>
+<?php if($this->config->item('custom3_name') != NULL){ ?>
+	<div class="field_row clearfix">
+	<?php echo form_label($this->config->item('custom3_name').':', 'custom3',array('class'=>'wide')); ?>
 	<div class='form_field'>
 		<?php echo form_input(array(
 			'name'=>'custom3',
@@ -242,11 +240,9 @@ if($this->config->item('custom3_name') != NULL)
 	</div>
 <?php }//end if?>
 
-<div class="field_row clearfix">
-<?php
-if($this->config->item('custom4_name') != NULL)
-{
-	echo form_label($this->config->item('custom4_name').':', 'custom4',array('class'=>'wide')); ?>
+<?php if($this->config->item('custom4_name') != NULL){ ?>
+	<div class="field_row clearfix">
+	<?php echo form_label($this->config->item('custom4_name').':', 'custom4',array('class'=>'wide')); ?>
 	<div class='form_field'>
 		<?php echo form_input(array(
 			'name'=>'custom4',
@@ -257,11 +253,9 @@ if($this->config->item('custom4_name') != NULL)
 	</div>
 <?php }//end if?>
 
-<div class="field_row clearfix">
-<?php
-if($this->config->item('custom5_name') != NULL)
-{
-	echo form_label($this->config->item('custom5_name').':', 'custom5',array('class'=>'wide')); ?>
+<?php if($this->config->item('custom5_name') != NULL){ ?>
+	<div class="field_row clearfix">
+	<?php echo form_label($this->config->item('custom5_name').':', 'custom5',array('class'=>'wide')); ?>
 	<div class='form_field'>
 		<?php echo form_input(array(
 			'name'=>'custom5',
@@ -272,11 +266,9 @@ if($this->config->item('custom5_name') != NULL)
 	</div>
 <?php }//end if?>
 
-<div class="field_row clearfix">
-<?php
-if($this->config->item('custom6_name') != NULL)
-{
-	echo form_label($this->config->item('custom6_name').':', 'custom6',array('class'=>'wide')); ?>
+<?php if($this->config->item('custom6_name') != NULL){ ?>
+	<div class="field_row clearfix">
+	<?php echo form_label($this->config->item('custom6_name').':', 'custom6',array('class'=>'wide')); ?>
 	<div class='form_field'>
 		<?php echo form_input(array(
 			'name'=>'custom6',
@@ -287,11 +279,9 @@ if($this->config->item('custom6_name') != NULL)
 	</div>
 <?php }//end if?>
 
-<div class="field_row clearfix">
-<?php
-if($this->config->item('custom7_name') != NULL)
-{
-	echo form_label($this->config->item('custom7_name').':', 'custom7',array('class'=>'wide')); ?>
+<?php if($this->config->item('custom7_name') != NULL){ ?>
+	<div class="field_row clearfix">
+	<?php echo form_label($this->config->item('custom7_name').':', 'custom7',array('class'=>'wide')); ?>
 	<div class='form_field'>
 		<?php echo form_input(array(
 			'name'=>'custom7',
@@ -302,11 +292,9 @@ if($this->config->item('custom7_name') != NULL)
 	</div>
 <?php }//end if?>
 
-<div class="field_row clearfix">
-<?php
-if($this->config->item('custom8_name') != NULL)
-{
-	echo form_label($this->config->item('custom8_name').':', 'custom8',array('class'=>'wide')); ?>
+<?php if($this->config->item('custom8_name') != NULL){ ?>
+	<div class="field_row clearfix">
+	<?php echo form_label($this->config->item('custom8_name').':', 'custom8',array('class'=>'wide')); ?>
 	<div class='form_field'>
 		<?php echo form_input(array(
 			'name'=>'custom8',
@@ -317,11 +305,9 @@ if($this->config->item('custom8_name') != NULL)
 	</div>
 <?php }//end if?>
 
-<div class="field_row clearfix">
-<?php
-if($this->config->item('custom9_name') != NULL)
-{
-	echo form_label($this->config->item('custom9_name').':', 'custom9',array('class'=>'wide')); ?>
+<?php if($this->config->item('custom9_name') != NULL){ ?>
+	<div class="field_row clearfix">
+	<?php echo form_label($this->config->item('custom9_name').':', 'custom9',array('class'=>'wide')); ?>
 	<div class='form_field'>
 		<?php echo form_input(array(
 			'name'=>'custom9',
@@ -332,11 +318,9 @@ if($this->config->item('custom9_name') != NULL)
 	</div>
 <?php }//end if?>
 
-<div class="field_row clearfix">
-<?php
-if($this->config->item('custom10_name') != NULL)
-{
-	echo form_label($this->config->item('custom10_name').':', 'custom10',array('class'=>'wide')); ?>
+<?php if($this->config->item('custom10_name') != NULL){ ?>
+	<div class="field_row clearfix">
+	<?php echo form_label($this->config->item('custom10_name').':', 'custom10',array('class'=>'wide')); ?>
 	<div class='form_field'>
 		<?php echo form_input(array(
 			'name'=>'custom10',
