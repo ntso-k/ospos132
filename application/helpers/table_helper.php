@@ -8,7 +8,7 @@ function get_people_manage_table($people,$controller)
 	$table='<table class="tablesorter" id="sortable_table">';
 	
 	$headers = array('<input type="checkbox" id="select_all" />', 
-	$CI->lang->line('common_last_name'),
+	//$CI->lang->line('common_last_name'),
 	$CI->lang->line('common_first_name'),
 	$CI->lang->line('common_email'),
 	$CI->lang->line('common_phone_number'),
@@ -54,7 +54,7 @@ function get_person_data_row($person,$controller)
 
 	$table_data_row='<tr>';
 	$table_data_row.="<td width='5%'><input type='checkbox' id='person_$person->person_id' value='".$person->person_id."'/></td>";
-	$table_data_row.='<td width="20%">'.character_limiter($person->last_name,13).'</td>';
+	//$table_data_row.='<td width="20%">'.character_limiter($person->last_name,13).'</td>';
 	$table_data_row.='<td width="20%">'.character_limiter($person->first_name,13).'</td>';
 	$table_data_row.='<td width="30%">'.mailto($person->email,character_limiter($person->email,22)).'</td>';
 	$table_data_row.='<td width="20%">'.character_limiter($person->phone_number,13).'</td>';		
@@ -88,7 +88,7 @@ function get_supplier_manage_table($suppliers,$controller)
 	
 	$headers = array('<input type="checkbox" id="select_all" />',
 	$CI->lang->line('suppliers_company_name'),
-	$CI->lang->line('common_last_name'),
+	//$CI->lang->line('common_last_name'),
 	$CI->lang->line('common_first_name'),
 	$CI->lang->line('common_email'),
 	$CI->lang->line('common_phone_number'),
@@ -135,7 +135,7 @@ function get_supplier_data_row($supplier,$controller)
 	$table_data_row='<tr>';
 	$table_data_row.="<td width='5%'><input type='checkbox' id='person_$supplier->person_id' value='".$supplier->person_id."'/></td>";
 	$table_data_row.='<td width="17%">'.character_limiter($supplier->company_name,13).'</td>';
-	$table_data_row.='<td width="17%">'.character_limiter($supplier->last_name,13).'</td>';
+	//$table_data_row.='<td width="17%">'.character_limiter($supplier->last_name,13).'</td>';
 	$table_data_row.='<td width="17%">'.character_limiter($supplier->first_name,13).'</td>';
 	$table_data_row.='<td width="22%">'.mailto($supplier->email,character_limiter($supplier->email,22)).'</td>';
 	$table_data_row.='<td width="17%">'.character_limiter($supplier->phone_number,13).'</td>';		
@@ -251,7 +251,7 @@ function get_giftcards_manage_table( $giftcards, $controller )
 	$table='<table class="tablesorter" id="sortable_table">';
 	
 	$headers = array('<input type="checkbox" id="select_all" />', 
-	$CI->lang->line('common_last_name'),
+	//$CI->lang->line('common_last_name'),
 	$CI->lang->line('common_first_name'),
 	$CI->lang->line('giftcards_giftcard_number'),
 	$CI->lang->line('giftcards_card_value'),
@@ -299,7 +299,7 @@ function get_giftcard_data_row($giftcard,$controller)
 
 	$table_data_row='<tr>';
 	$table_data_row.="<td width='3%'><input type='checkbox' id='giftcard_$giftcard->giftcard_id' value='".$giftcard->giftcard_id."'/></td>";
-	$table_data_row.='<td width="15%">'.$giftcard->last_name.'</td>';
+	//$table_data_row.='<td width="15%">'.$giftcard->last_name.'</td>';
 	$table_data_row.='<td width="15%">'.$giftcard->first_name.'</td>';
 	$table_data_row.='<td width="15%">'.$giftcard->giftcard_number.'</td>';
 	$table_data_row.='<td width="20%">'.to_currency($giftcard->value).'</td>';
