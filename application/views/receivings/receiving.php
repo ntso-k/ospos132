@@ -220,7 +220,7 @@ else
 		<label id="comment_label" for="comment"><?php echo $this->lang->line('common_comments'); ?>:</label>
 		<?php echo form_textarea(array('name'=>'comment','value'=>'','rows'=>'4','cols'=>'23'));?>
 		<br /><br />
-		<table width="100%"><tr><td>
+		<table width="100%" style="display: none;"><tr><td>
 		<?php
 			echo $this->lang->line('sales_payment').':   ';?>
 		</td><td>

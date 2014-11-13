@@ -230,7 +230,7 @@ else
 
     	<div id="Cancel_sale">
 		<?php echo form_open("sales/cancel_sale",array('id'=>'cancel_sale_form')); ?>
-		<div class='small_button' id='cancel_sale_button'
+		<div class='small_button small_button_red' id='cancel_sale_button'
 			style='margin-top: 5px;'>
 			<span><?php echo $this->lang->line('sales_cancel_sale'); ?></span>
 		</div>
