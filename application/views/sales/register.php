@@ -391,6 +391,14 @@ $(document).ready(function()
 		$("#add_item_form").submit();
     });
 
+	$('#add_item_form #item').bind('keypress',function(event){
+		if(event.keyCode == "13" && $(this).val()=='')
+		{
+			event.preventDefault();
+			$('<audio src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&text=九百五十八元六角" preload="preload" autoplay="autoplay" controls="controls"></audio>').appendTo("body");
+		}
+	});
+
 	$('#item').focus();
 
 	$('#item').blur(function()
