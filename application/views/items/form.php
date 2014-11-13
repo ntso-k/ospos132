@@ -12,6 +12,7 @@ echo form_open('items/save/'.$item_info->item_id,array('id'=>'item_form'));
 	<?php echo form_input(array(
 		'name'=>'item_number',
 		'id'=>'item_number',
+		'autofocus'=>'autofocus',
 		'value'=>$item_info->item_number)
 	);?>
 	</div>
@@ -467,6 +468,14 @@ $(document).ready(function()
 				number:"<?php echo $this->lang->line('items_reorder_level_number'); ?>"
 			}
 
+		}
+	});
+
+	$('#item_form #item_number').bind('keypress',function(event){
+		if(event.keyCode == "13")
+		{
+			event.preventDefault();
+			$('#item_form #name').focus();
 		}
 	});
 });
