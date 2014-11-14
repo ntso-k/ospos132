@@ -404,6 +404,7 @@ class Sales extends Secure_area
 			$data['customer_email']=$info->email;
 		}
 		$data['payments_cover_total'] = $this->_payments_cover_total();
+		$data['tts_source'] = $this->config->item('tts_source');
 		$this->load->view("sales/register",$data);
 		$this->_remove_duplicate_cookies();
 	}

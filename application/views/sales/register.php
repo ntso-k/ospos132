@@ -196,6 +196,8 @@ else
 	<div id='sale_details'>
 		<div class="float_left" style='width: 40%;'><?php echo $this->lang->line('sales_total'); ?>:</div>
 		<div class="float_left" style="width: 60%; font-weight: bold;"><?php echo to_currency($total); ?></div>
+		<input type="hidden" id="sales_total" value="<?=$total ?>" />
+		<input type="hidden" id="tts_source" value="<?=$tts_source ?>" />
 	</div>
 	<div class="clearfix">&nbsp;</div>
 	<div id="select_customer" style="display: none;">
@@ -248,7 +250,7 @@ else
 					<!--<div class="small_button" id="suspend_sale_button" style="float:left;margin-top:5px;"><span><?php /*echo $this->lang->line('sales_suspend_sale'); */?></span></div>-->
 					<?php //if ($payments_cover_total){ ?>
 					<div class='small_button' id='finish_sale_button' style='float:left;margin-top:5px;'><span><?php echo $this->lang->line('sales_complete_sale') ?></span></div>
-					<?php// } ?>
+					<?php //} ?>
 				</div>
 				<br/>
 				<label id="comment_label" for="comment"><?php echo $this->lang->line('sales_comments'); ?>:</label>
@@ -395,7 +397,7 @@ $(document).ready(function()
 		if(event.keyCode == "13" && $(this).val()=='')
 		{
 			event.preventDefault();
-			$('<audio src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&text=九百五十八元六角" preload="preload" autoplay="autoplay" controls="controls"></audio>').appendTo("body");
+			sales_tts_speak(getAmountText($('#sales_total').val()), $('#tts_source').val());
 		}
 	});
 
@@ -505,6 +507,52 @@ function checkPaymentTypeGiftcard()
 	else
 	{
 		$("#amount_tendered_label").html("<?php echo $this->lang->line('sales_amount_tendered'); ?>");		
+	}
+}
+
+function getAmountText(amount)
+{
+	var pattern = /^\d+\.\d{2}$/;
+	if(!pattern.test(amount))
+	{
+		return false;
+	}
+	var text = '';
+	var y = amount.substr(0, amount.length - 3);
+	var j = amount.charAt(amount.length - 2);
+	var f = amount.charAt(amount.length - 1);
+
+	if(y > 0)
+	{
+		text += y + '元';
+	}
+	if(j > 0)
+	{
+		text += j + '角';
+	}
+	if(f > 0)
+	{
+		text += f + '分';
+	}
+	return text;
+}
+
+function sales_tts_speak(text, source)
+{
+	if(text == '')return;
+
+	if((source=='' || source==0) && ('speechSynthesis' in window)){
+		window.speechSynthesis.cancel();
+		var speech = new SpeechSynthesisUtterance(text);
+		speech.lang = 'zh-CN';
+		window.speechSynthesis.speak(speech);
+	}else if(source==1){
+		var src = "http://tts.baidu.com/text2audio?lan=zh&pid=101&ie=UTF-8&spd=2&text=" + text;
+		$('<audio src="' + src + '" preload="preload" autoplay="autoplay" controls="controls"></audio>').appendTo("body");
+	}else if(source==2){
+		//TODO: google 直接把URL放在audio标签里面无法读音
+		var src = "http://translate.google.com/translate_tts?ie=UTF-8&tl=zh-CN&q=" + text;
+		$('<audio src="' + src + '" preload="preload" autoplay="autoplay" controls="controls"></audio>').appendTo("body");
 	}
 }
 
