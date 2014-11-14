@@ -281,6 +281,17 @@ echo form_open('config/save/',array('id'=>'config_form'));
 </div>
 
 <div class="field_row clearfix">	
+<?php echo form_label($this->lang->line('config_tts_source').':', 'tts_source',array('class'=>'wide')); ?>
+	<div class='form_field'>
+	<?php echo form_dropdown('tts_source', 
+	 array(
+		'0'=>'Local',
+		'1'=>'Baidu',
+		'2'=>'Google'), $this->config->item('tts_source'));?>
+	</div>
+</div>
+
+<div class="field_row clearfix">	
 <?php echo form_label($this->lang->line('config_custom1').':', 'website',array('class'=>'wide')); ?>
 	<div class='form_field'>
 	<?php echo form_input(array(

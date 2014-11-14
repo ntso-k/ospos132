@@ -20,6 +20,7 @@ $lang['config_return_policy_required'] = '退換货政策为必填';
 $lang['config_print_after_sale'] = '出货时打印收据';
 $lang['config_language'] = '语言';
 $lang['config_timezone'] = '时区';
+$lang['config_tts_source'] = '语音来源';
 $lang['config_currency_symbol'] = '货币符号';
 $lang['config_currency_side'] = '靠右显示'; //GARRISON ADDED 4/20/2013
 $lang['config_custom1'] = 'Custom Field 1'; //GARRISON ADDED 4/21/2013

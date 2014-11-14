@@ -36,6 +36,7 @@ INSERT INTO `ospos_app_config` (`key`, `value`) VALUES
 ('phone', '555-555-5555'),
 ('return_policy', 'Test'),
 ('timezone', 'America/New_York'),
+('tts_source', '0'),
 ('website', '');
 
 -- --------------------------------------------------------

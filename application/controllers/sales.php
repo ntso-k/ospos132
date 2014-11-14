@@ -467,5 +467,24 @@ class Sales extends Secure_area
 		$this->Sale_suspended->delete($sale_id);
     	$this->_reload();
 	}
+	
+	function tts()
+	{
+		$text = $this->input->get('text');
+		
+		file_put_contents('combined.mp3',
+			file_get_contents('9.mp3') .
+			file_get_contents('qian.mp3') .
+			file_get_contents('8.mp3') .
+			file_get_contents('bai.mp3') .
+			file_get_contents('7.mp3') .
+			file_get_contents('shi.mp3') .
+			file_get_contents('yuan.mp3')
+		);
+		header("Content-type:audio/mpeg");
+		header("Cache-Control: no-cache");
+		header("Pragma: no-cache");
+		readfile("combined.mp3");
+	}
 }
 ?>
