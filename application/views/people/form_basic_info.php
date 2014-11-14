@@ -1,4 +1,4 @@
-<div class="field_row clearfix">	
+<div class="field_row clearfix">
 <?php echo form_label($this->lang->line('common_first_name').':', 'first_name',array('class'=>'required')); ?>
 	<div class='form_field'>
 	<?php echo form_input(array(
@@ -8,8 +8,8 @@
 	);?>
 	</div>
 </div>
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('common_last_name').':', 'last_name',array('class'=>'required')); ?>
+<div class="field_row clearfix" style="display: none;">
+<?php echo form_label($this->lang->line('common_last_name').':', 'last_name'); ?>
 	<div class='form_field'>
 	<?php echo form_input(array(
 		'name'=>'last_name',

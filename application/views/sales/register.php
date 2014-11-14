@@ -24,7 +24,7 @@ if (isset($success))
 <span><?php echo $this->lang->line('sales_stock_location') ?></span>
 <?php echo form_dropdown('stock_location',$stock_locations,$stock_location,'onchange="$(\'#mode_form\').submit();"'); ?>
 <?php endif; ?>
-<div id="show_suspended_sales_button">
+<div id="show_suspended_sales_button" style="display: none;">
 	<?php echo anchor("sales/suspended/width:425",
 	"<div class='small_button'><span style='font-size:73%;'>".$this->lang->line('sales_suspended_sales')."</span></div>",
 	array('class'=>'thickbox none','title'=>$this->lang->line('sales_suspended_sales')));
@@ -198,7 +198,7 @@ else
 		<div class="float_left" style="width: 60%; font-weight: bold;"><?php echo to_currency($total); ?></div>
 	</div>
 	<div class="clearfix">&nbsp;</div>
-	<div id="select_customer">
+	<div id="select_customer" style="display: none;">
 	<?php
 	if(isset($customer))
 	{
@@ -230,7 +230,7 @@ else
 
     	<div id="Cancel_sale">
 		<?php echo form_open("sales/cancel_sale",array('id'=>'cancel_sale_form')); ?>
-		<div class='small_button' id='cancel_sale_button'
+		<div class='small_button small_button_red' id='cancel_sale_button'
 			style='margin-top: 5px;'>
 			<span><?php echo $this->lang->line('sales_cancel_sale'); ?></span>
 		</div>
@@ -239,24 +239,25 @@ else
 	<div class="clearfix">&nbsp;</div>
 		<?php
 		// Only show this part if there is at least one payment entered.
-		if(count($payments) > 0)
-		{
+		//if(count($payments) > 0)
+		//{
 		?>
 			<div id="finish_sale">
 				<?php echo form_open("sales/complete",array('id'=>'finish_sale_form')); ?>
 				<div class="clearfix">
-					<div class="small_button" id="suspend_sale_button" style="float:left;margin-top:5px;"><span><?php echo $this->lang->line('sales_suspend_sale'); ?></span></div>
-					<?php if ($payments_cover_total){ ?>
-					<div class='small_button' id='finish_sale_button' style='float:right;margin-top:5px;'><span><?php echo $this->lang->line('sales_complete_sale') ?></span></div>
-					<?php } ?>
+					<!--<div class="small_button" id="suspend_sale_button" style="float:left;margin-top:5px;"><span><?php /*echo $this->lang->line('sales_suspend_sale'); */?></span></div>-->
+					<?php //if ($payments_cover_total){ ?>
+					<div class='small_button' id='finish_sale_button' style='float:left;margin-top:5px;'><span><?php echo $this->lang->line('sales_complete_sale') ?></span></div>
+					<?php// } ?>
 				</div>
+				<br/>
 				<label id="comment_label" for="comment"><?php echo $this->lang->line('sales_comments'); ?>:</label>
 				<?php echo form_textarea(array('name'=>'comment', 'id' => 'comment', 'value'=>$comment,'rows'=>'3','cols'=>'30'));?>
 				<br />
 		<br />
-				
+				<!--
 				<?php
-				
+
 				if(!empty($customer_email))
 				{
 					echo $this->lang->line('sales_email_receipt'). ': '. form_checkbox(array(
@@ -267,14 +268,15 @@ else
 					    )).'<br />('.$customer_email.')<br />';
 				}
 				?>
+				-->
 			</div>
 	</form>
 		<?php
-		}
+		//}
 		?>
 
 
-
+<!--
     <table width="100%">
 		<tr>
 			<td style="width: 55%;"><div class="float_left"><?php echo $this->lang->line('sales_payments_total').':';?></div></td>
@@ -360,7 +362,7 @@ else
 
 
 	</div>
-
+-->
 	<?php
 	}
 	?>
@@ -388,6 +390,14 @@ $(document).ready(function()
     {
 		$("#add_item_form").submit();
     });
+
+	$('#add_item_form #item').bind('keypress',function(event){
+		if(event.keyCode == "13" && $(this).val()=='')
+		{
+			event.preventDefault();
+			$('<audio src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&text=九百五十八元六角" preload="preload" autoplay="autoplay" controls="controls"></audio>').appendTo("body");
+		}
+	});
 
 	$('#item').focus();
 
@@ -434,10 +444,10 @@ $(document).ready(function()
 	
     $("#finish_sale_button").click(function()
     {
-    	if (confirm('<?php echo $this->lang->line("sales_confirm_finish_sale"); ?>'))
-    	{
+    	//if (confirm('<?php echo $this->lang->line("sales_confirm_finish_sale"); ?>'))
+    	//{
     		$('#finish_sale_form').submit();
-    	}
+    	//}
     });
 
 	$("#suspend_sale_button").click(function()
@@ -451,10 +461,10 @@ $(document).ready(function()
 
     $("#cancel_sale_button").click(function()
     {
-    	if (confirm('<?php echo $this->lang->line("sales_confirm_cancel_sale"); ?>'))
-    	{
+    	//if (confirm('<?php echo $this->lang->line("sales_confirm_cancel_sale"); ?>'))
+    	//{
     		$('#cancel_sale_form').submit();
-    	}
+    	//}
     });
 
 	$("#add_payment_button").click(function()

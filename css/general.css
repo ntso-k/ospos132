@@ -71,6 +71,10 @@ label.required
 	font-weight:bold;
 	text-align:center;
 }
+.small_button_red
+{
+    background-image: url(../images/small_action_button_red.jpg);
+}
 
 .float_left
 {

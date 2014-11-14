@@ -204,7 +204,12 @@ class Sales extends Secure_area
 		$employee_id=$this->Employee->get_logged_in_employee_info()->person_id;
 		$comment = $this->sale_lib->get_comment();
 		$emp_info=$this->Employee->get_info($employee_id);
-		$data['payments']=$this->sale_lib->get_payments();
+		$payments=$this->sale_lib->get_payments();
+		if(empty($payments)){
+			$this->sale_lib->add_payment( $this->lang->line('sales_cash'), $this->sale_lib->get_total());
+			$payments = $this->sale_lib->get_payments();
+		}
+		$data['payments']=$payments;
 		$data['amount_change']=to_currency($this->sale_lib->get_amount_due() * -1);
 		$data['employee']=$emp_info->first_name.' '.$emp_info->last_name;
         
